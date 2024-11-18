@@ -11,19 +11,22 @@ export default function Navbar({ onSearchChange }) {
   };
 
   return (
-    <nav className="grid grid-cols-3 justify-between px-24 py-4 bg-[#8091FF] items-center">
-      <ul>
-        <li className="flex items-center justify-center">
-          <Link to="/" className="text-[#F2F4FF] hover:text-[#565f93] active:text-[#1d2342]">
+    <nav className="bg-[#2C3E50] p-4 rounded-lg shadow-lg flex justify-between items-center">
+      {/* Logo/Home Link */}
+      <ul className="flex items-center space-x-6">
+        <li>
+          <Link to="/" className="text-white font-bold text-lg hover:text-[#1abc9c] transition-all duration-300 ease-in-out">
             Home
           </Link>
         </li>
       </ul>
+
+      {/* Search Bar */}
       <ul className="flex justify-center items-center">
-        <li className="w-full">
+        <li className="w-full max-w-xs">
           <input
             type="text"
-            className="text-black active:text-black focus:text-black px-4 py-2 w-full"
+            className="text-gray-800 px-4 py-2 w-full rounded-full focus:outline-none focus:ring-2 focus:ring-[#1abc9c] transition-all duration-300 ease-in-out"
             name="search"
             id={inputId}
             placeholder="Search product..."
@@ -31,31 +34,50 @@ export default function Navbar({ onSearchChange }) {
           />
         </li>
       </ul>
+
+      {/* Conditional Rendering based on login status */}
       {!isLoggedIn ? (
-        <ul className="flex gap-2 justify-end">
-          <li className="text-[#F2F4FF] hover:text-[#565f93] active:text-[#1d2342]">
-            <button onClick={login}>Sign in</button>
+        <ul className="flex gap-4 justify-end items-center">
+          <li>
+            <button
+              onClick={login}
+              className="text-white hover:text-[#1abc9c] transition-all duration-300 ease-in-out"
+            >
+              Sign in
+            </button>
           </li>
           <li>
-            <Link className="text-[#F2F4FF] hover:text-[#565f93] active:text-[#1d2342]" to="/signup">
+            <Link
+              className="text-white hover:text-[#1abc9c] transition-all duration-300 ease-in-out"
+              to="/signup"
+            >
               Sign up
             </Link>
           </li>
         </ul>
       ) : (
-        <ul className="flex justify-end gap-2">
+        <ul className="flex gap-6 justify-end items-center">
           <li>
-            <Link className="text-[#F2F4FF] hover:text-[#565f93] active:text-[#1d2342]" to="/cart">
+            <Link
+              to="/cart"
+              className="text-white hover:text-[#1abc9c] transition-all duration-300 ease-in-out"
+            >
               Cart
             </Link>
           </li>
           <li>
-            <Link to="/orders" className="text-[#F2F4FF] hover:text-[#565f93] active:text-[#1d2342]">
+            <Link
+              to="/orders"
+              className="text-white hover:text-[#1abc9c] transition-all duration-300 ease-in-out"
+            >
               My Orders
             </Link>
           </li>
           <li>
-            <button onClick={logout} className="text-[#F2F4FF] hover:text-[#565f93] active:text-[#1d2342]">
+            <button
+              onClick={logout}
+              className="text-white hover:text-[#1abc9c] transition-all duration-300 ease-in-out"
+            >
               Sign out
             </button>
           </li>
